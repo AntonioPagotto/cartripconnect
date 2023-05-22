@@ -1,10 +1,10 @@
-package com.unifei.edu.br.cartripconnect;
+package com.unifei.edu.br.carconnect;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CartripconnectApplicationTests {
+class CarconnectApplicationTests {
 
 	@Test
 	void contextLoads() {
