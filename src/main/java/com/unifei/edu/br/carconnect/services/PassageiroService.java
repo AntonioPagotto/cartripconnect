@@ -15,36 +15,36 @@ public class PassageiroService {
     private PassageiroRepository passageiroRepository;
 
     public List<Passageiro> getAllPassageiros() {
-        return passageiroRepository.findAll();
+        return passageiroRepository.buscarTodosPassageiros();
     }
 
-    public Optional<Passageiro> getPassageiroById(String id) {
-        return passageiroRepository.findById(id);
+    public Passageiro getPassageiroById(String id) {
+        return passageiroRepository.buscarPassageiroPorId(id);
     }
 
-    public Passageiro createPassageiro(Passageiro passageiro) {
-        return passageiroRepository.save(passageiro);
+    public String createPassageiro(Passageiro passageiro) {
+        return passageiroRepository.inserirPassageiro(passageiro);
     }
 
-    public Passageiro updatePassageiro(String id, Passageiro passageiro) {
-        Optional<Passageiro> existingPassageiro = passageiroRepository.findById(id);
-        if (existingPassageiro.isPresent()) {
-            existingPassageiro.get().setNome(passageiro.getNome());
-            existingPassageiro.get().setCpf(passageiro.getCpf());
-            existingPassageiro.get().setRanking(passageiro.getRanking());
-            existingPassageiro.get().setSenha(passageiro.getSenha());
-            existingPassageiro.get().setMeioDePagamento(passageiro.getMeioDePagamento());
+    public String updatePassageiro(String id, Passageiro passageiro) {
+        Passageiro existingPassageiro = passageiroRepository.buscarPassageiroPorId(id);
+        if (existingPassageiro != null) {
+            existingPassageiro.setNome(passageiro.getNome());
+            existingPassageiro.setCpf(passageiro.getCpf());
+            existingPassageiro.setRanking(passageiro.getRanking());
+            existingPassageiro.setSenha(passageiro.getSenha());
+            existingPassageiro.setMeioDePagamento(passageiro.getMeioDePagamento());
 
-            return passageiroRepository.save(existingPassageiro);
+            return passageiroRepository.editarPassageiro(existingPassageiro);
         } else {
             return null;
         }
     }
 
     public void deletePassageiro(String id) {
-        Optional<Passageiro> passageiro = passageiroRepository.findById(id);
-        if (passageiro.isPresent()) {
-            passageiroRepository.deleteById(id);
+        Passageiro passageiro = passageiroRepository.buscarPassageiroPorId(id);
+        if (passageiro != null) {
+            passageiroRepository.apagarPassageiroPorId(id);
         }
     }
 }

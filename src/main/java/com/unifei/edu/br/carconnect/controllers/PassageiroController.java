@@ -14,45 +14,47 @@ import java.util.Optional;
 @RequestMapping("/passageiros")
 public class PassageiroController {
 
-    @Autowired
-    private PassageiroService passageiroService;
+    private final PassageiroService passageiroService;
+
+    public PassageiroController(PassageiroService passageiroService) {
+        this.passageiroService = passageiroService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Passageiro>> getAllPassageiros() {
         List<Passageiro> passageiros = passageiroService.getAllPassageiros();
-        return new ResponseEntity<>(passageiros, HttpStatus.OK);
+        return ResponseEntity.ok(passageiros);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Passageiro> getPassageiroById(@PathVariable("id") String id) {
-        Optional<Passageiro> passageiroOptional = passageiroService.getPassageiroById(id);
-        if (passageiroOptional.isPresent()) {
-            Passageiro passageiro = passageiroOptional.get();
-            return new ResponseEntity<>(passageiro, HttpStatus.OK);
+    public ResponseEntity<Passageiro> getPassageiroById(@PathVariable String id) {
+        Passageiro passageiro = passageiroService.getPassageiroById(id);
+        if (passageiro != null) {
+            return ResponseEntity.ok(passageiro);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping
-    public ResponseEntity<Passageiro> createPassageiro(@RequestBody Passageiro passageiro) {
-        Passageiro createdPassageiro = passageiroService.createPassageiro(passageiro);
-        return new ResponseEntity<>(createdPassageiro, HttpStatus.CREATED);
+    public ResponseEntity<String> createPassageiro(@RequestBody Passageiro passageiro) {
+        String id = passageiroService.createPassageiro(passageiro);
+        return ResponseEntity.status(HttpStatus.CREATED).body(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Passageiro> updatePassageiro(@PathVariable("id") String id, @RequestBody Passageiro passageiro) {
-        Passageiro updatedPassageiro = passageiroService.updatePassageiro(id, passageiro);
-        if (updatedPassageiro != null) {
-            return new ResponseEntity<>(updatedPassageiro, HttpStatus.OK);
+    public ResponseEntity<String> updatePassageiro(@PathVariable String id, @RequestBody Passageiro passageiro) {
+        String result = passageiroService.updatePassageiro(id, passageiro);
+        if (result != null) {
+            return ResponseEntity.ok(result);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePassageiro(@PathVariable("id") String id) {
+    public ResponseEntity<Void> deletePassageiro(@PathVariable String id) {
         passageiroService.deletePassageiro(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }
