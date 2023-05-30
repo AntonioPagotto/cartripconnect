@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CadastroMotoristaComponent } from './cadastro-motorista/cadastro-motorista.component';
-import { CadastroPassageiroComponent } from './cadastro-passageiro/cadastro-passageiro.component';
-import { LoginComponent } from './login/login.component';
+import { CadastroMotoristaComponent } from './telas/cadastro-motorista/cadastro-motorista.component';
+import { CadastroPassageiroComponent } from './telas/cadastro-passageiro/cadastro-passageiro.component';
+import { LoginComponent } from './telas/login/login.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

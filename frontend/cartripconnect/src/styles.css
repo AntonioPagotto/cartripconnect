@@ -57,6 +57,19 @@ body {
     outline: none;
 }
 
+.formLogin select{
+    width: 320px;
+    height: 48px;
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+}
+
 
 .formLogin input:focus {
     border: 1px solid #2579f7;
