@@ -18,7 +18,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\":\"teste\",\n    \"nome\":\"teste\",\n    \"email\":\"email@teste.com\",\n    \"senha\":\"senha123\",\n    \"cpf\":\"123321213321\",\n    \"telefone\":\"13232323123\",\n    \"ranking\":\"5\"\n}",
+									"raw": "{\n    \"id\":\"te4st23e\",\n    \"nome\":\"teste\",\n    \"email\":\"email@teste.com\",\n    \"senha\":\"senha123\",\n    \"cpf\":\"123321213321\",\n    \"telefone\":\"13232323123\",\n    \"ranking\":\"5\",\n    \"meioDePagamento\":\"CARTAO_DE_CREDITO\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -45,7 +45,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\":\"teste\",\n    \"nome\":\"teste\",\n    \"email\":\"email@teste.com\",\n    \"senha\":\"senha123\",\n    \"cpf\":\"123321213321\",\n    \"telefone\":\"13232323123\",\n    \"ranking\":\"5\"\n}",
+									"raw": "{\n    \"nome\":\"teste\",\n    \"email\":\"email@teste.com\",\n    \"senha\":\"senha123\",\n    \"cpf\":\"123321213321\",\n    \"telefone\":\"13232323123\",\n    \"ranking\":\"5\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -65,7 +65,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "te4st23e"
 										}
 									]
 								}
@@ -90,7 +90,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "te4st23e"
 										}
 									]
 								}
@@ -100,6 +100,9 @@
 						{
 							"name": "GET ALL",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -133,7 +136,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "te4st23e"
 										}
 									]
 								}
