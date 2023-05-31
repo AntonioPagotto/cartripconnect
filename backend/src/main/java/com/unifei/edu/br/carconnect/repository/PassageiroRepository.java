@@ -1,5 +1,6 @@
 package com.unifei.edu.br.carconnect.repository;
 
+import com.unifei.edu.br.carconnect.models.Login;
 import com.unifei.edu.br.carconnect.models.Passageiro;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,5 +20,7 @@ public interface PassageiroRepository{
 
     String editarPassageiro(final Passageiro passageiro);
     String apagarPassageiroPorId(final String id);
+
+    String loginPassageiro(final Login login);
 
 }

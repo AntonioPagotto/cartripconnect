@@ -1,5 +1,7 @@
 package com.unifei.edu.br.carconnect.controllers;
 
+import com.unifei.edu.br.carconnect.models.IdResponse;
+import com.unifei.edu.br.carconnect.models.Login;
 import com.unifei.edu.br.carconnect.models.Motorista;
 import com.unifei.edu.br.carconnect.services.MotoristaService;
 import org.springframework.http.HttpStatus;
@@ -48,10 +50,11 @@ public class MotoristaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateMotorista(@PathVariable String id, @RequestBody Motorista motorista) {
+    public ResponseEntity<IdResponse> updateMotorista(@PathVariable String id, @RequestBody Motorista motorista) {
         String result = motoristaService.updateMotorista(id, motorista);
         if (result != null) {
-            return ResponseEntity.ok(result);
+            IdResponse response = new IdResponse(result);
+            return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -61,5 +64,13 @@ public class MotoristaController {
     public ResponseEntity<Void> deleteMotorista(@PathVariable String id) {
         motoristaService.deleteMotorista(id);
         return ResponseEntity.noContent().build();
+    }
+
+
+    @PostMapping("/login")
+    public ResponseEntity<IdResponse> loginMotorista(@RequestBody Login login) {
+        IdResponse response = new IdResponse(motoristaService.loginMotorista(login));
+
+        return ResponseEntity.ok(response);
     }
 }

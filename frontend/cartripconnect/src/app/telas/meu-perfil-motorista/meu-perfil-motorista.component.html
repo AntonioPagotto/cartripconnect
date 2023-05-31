@@ -1,7 +1,9 @@
+
 <div class="page">
   <form class="formLogin">
-    <h1>Cadastro de Motorista</h1>
-    <p>Cadastre os dados abaixo para virar um motorista.</p>
+    <img src="../../assets/logo.png" width="250" height="auto">
+    <h1>Meu Perfil Motorista</h1>
+    <p>Dados do seu perfil de Passageiro</p>
     <label>Nome</label>
     <input type="text" [formControl]="nome" placeholder="Digite seu nome" autofocus="true" />
     <label>CPF</label>
@@ -10,8 +12,7 @@
     <input type="text" [formControl]="telefone" placeholder="Digite seu Celular" autofocus="true" />
     <label>E-mail</label>
     <input type="email" [formControl]="email" placeholder="Digite seu e-mail" autofocus="true" />
-    <label>Senha</label>
-    <input type="password" [formControl]="senha" placeholder="Digite seu e-mail" />
-    <input (click)="cadastrarMotorista()" value="Acessar" class="btn" />
+    <input (click)="atualizar()" value="Atualizar" class="btn" />
   </form>
 </div>
+

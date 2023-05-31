@@ -1,5 +1,6 @@
 package com.unifei.edu.br.carconnect.services;
 
+import com.unifei.edu.br.carconnect.models.Login;
 import com.unifei.edu.br.carconnect.models.Motorista;
 import com.unifei.edu.br.carconnect.repository.MotoristaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,8 @@ public class MotoristaService {
         if (existingMotorista != null) {
             existingMotorista.setNome(motorista.getNome());
             existingMotorista.setCpf(motorista.getCpf());
-            existingMotorista.setRanking(motorista.getRanking());
-            existingMotorista.setSenha(motorista.getSenha());
-
+            existingMotorista.setEmail(motorista.getEmail());
+            existingMotorista.setTelefone(motorista.getTelefone());
             return motoristaRepository.editarMotorista(existingMotorista);
         } else {
             return null;
@@ -44,5 +44,9 @@ public class MotoristaService {
         if (motorista != null) {
             motoristaRepository.apagarMotoristaPorId(id);
         }
+    }
+
+    public String loginMotorista(Login login) {
+        return motoristaRepository.loginMotorista(login);
     }
 }

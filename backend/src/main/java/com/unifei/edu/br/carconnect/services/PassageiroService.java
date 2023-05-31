@@ -1,5 +1,6 @@
 package com.unifei.edu.br.carconnect.services;
 
+import com.unifei.edu.br.carconnect.models.Login;
 import com.unifei.edu.br.carconnect.models.Passageiro;
 import com.unifei.edu.br.carconnect.repository.PassageiroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +32,9 @@ public class PassageiroService {
         if (existingPassageiro != null) {
             existingPassageiro.setNome(passageiro.getNome());
             existingPassageiro.setCpf(passageiro.getCpf());
-            existingPassageiro.setRanking(passageiro.getRanking());
-            existingPassageiro.setSenha(passageiro.getSenha());
+            existingPassageiro.setEmail(passageiro.getEmail());
+            existingPassageiro.setTelefone(passageiro.getTelefone());
             existingPassageiro.setMeioDePagamento(passageiro.getMeioDePagamento());
-
             return passageiroRepository.editarPassageiro(existingPassageiro);
         } else {
             return null;
@@ -46,5 +46,9 @@ public class PassageiroService {
         if (passageiro != null) {
             passageiroRepository.apagarPassageiroPorId(id);
         }
+    }
+
+    public String loginPassageiro(Login login) {
+        return passageiroRepository.loginPassageiro(login);
     }
 }

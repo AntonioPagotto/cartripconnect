@@ -1,12 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { PassageiroSerivce } from './passageiro.service';
+import { PassageiroSerivce } from '../../services/passageiro.service';
 
 @Component({
   selector: 'cadastro-passageiro-component',
   templateUrl: './cadastro-passageiro.component.html',
-  styleUrls: ['./cadastro-passageiro.component.css']
+  styleUrls: []
 })
 export class CadastroPassageiroComponent {
 

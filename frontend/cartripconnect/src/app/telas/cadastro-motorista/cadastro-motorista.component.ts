@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MotoristaSerivce } from './motorista.service';
+import { MotoristaSerivce } from '../../services/motorista.service';
 
 @Component({
   selector: 'cadastro-motorista-component',
   templateUrl: './cadastro-motorista.component.html',
-  styleUrls: ['./cadastro-motorista.component.css']
+  styleUrls: []
 })
 export class CadastroMotoristaComponent {
 

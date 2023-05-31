@@ -1,8 +1,11 @@
 package com.unifei.edu.br.carconnect.controllers;
 
+import com.unifei.edu.br.carconnect.models.IdResponse;
+import com.unifei.edu.br.carconnect.models.Login;
 import com.unifei.edu.br.carconnect.models.Passageiro;
 import com.unifei.edu.br.carconnect.services.PassageiroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,10 +46,11 @@ public class PassageiroController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updatePassageiro(@PathVariable String id, @RequestBody Passageiro passageiro) {
+    public ResponseEntity<IdResponse> updatePassageiro(@PathVariable String id, @RequestBody Passageiro passageiro) {
         String result = passageiroService.updatePassageiro(id, passageiro);
         if (result != null) {
-            return ResponseEntity.ok(result);
+            IdResponse response = new IdResponse(result);
+            return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -56,5 +60,14 @@ public class PassageiroController {
     public ResponseEntity<Void> deletePassageiro(@PathVariable String id) {
         passageiroService.deletePassageiro(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<IdResponse> loginPassageiro(@RequestBody Login login) {
+
+
+        IdResponse response = new IdResponse(passageiroService.loginPassageiro(login));
+
+        return ResponseEntity.ok(response);
     }
 }

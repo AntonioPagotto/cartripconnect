@@ -1,8 +1,12 @@
 package com.unifei.edu.br.carconnect.repository.impl;
 
+import com.unifei.edu.br.carconnect.models.Login;
 import com.unifei.edu.br.carconnect.models.Motorista;
+import com.unifei.edu.br.carconnect.models.Passageiro;
 import com.unifei.edu.br.carconnect.repository.MotoristaRepository;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -44,6 +48,16 @@ public class MotoristaRepositoryImpl implements MotoristaRepository {
   public String apagarMotoristaPorId(final String id){
 
     return mongoOperations.remove(id).toString();
+  }
+
+  @Override
+  public String loginMotorista(final Login login){
+
+    Query query = new Query();
+    query.addCriteria(Criteria.where("email").is(login.getEmail()).and("senha").is(login.getSenha()));
+
+    Motorista motorista = mongoOperations.findOne(query, Motorista.class, "motoristas");
+    return motorista.getId();
   }
 
 }
