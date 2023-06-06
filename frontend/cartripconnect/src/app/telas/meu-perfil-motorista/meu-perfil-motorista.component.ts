@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PassageiroSerivce } from '../../services/passageiro.service';
 import { MotoristaSerivce } from '../../services/motorista.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Motorista } from 'src/app/models/motorista.model';
 
 @Component({
@@ -23,7 +23,8 @@ export class MeuPerfilMotoristaComponent implements OnInit{
 
   constructor(
     private motoristaService: MotoristaSerivce,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -55,6 +56,14 @@ export class MeuPerfilMotoristaComponent implements OnInit{
     console.log(JSON.stringify(motorista));
 
     this.motoristaService.atualizarMotorista(motorista);    
+  }
+
+  apagar(){
+    this.motoristaService.deleteById(this.id).subscribe(response => this.router.navigate(['/inicio']))
+  }
+
+  meusCarros(){
+    this.router.navigate(['/meus-carros/', this.id]);
   }
 
 }

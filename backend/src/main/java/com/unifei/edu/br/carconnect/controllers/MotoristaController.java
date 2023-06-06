@@ -44,8 +44,10 @@ public class MotoristaController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createMotorista(@RequestBody Motorista motorista) {
-        String id = motoristaService.createMotorista(motorista);
+    public ResponseEntity<IdResponse> createMotorista(@RequestBody Motorista motorista) {
+
+        IdResponse id = new IdResponse(motoristaService.createMotorista(motorista));
+
         return ResponseEntity.status(HttpStatus.CREATED).body(id);
     }
 

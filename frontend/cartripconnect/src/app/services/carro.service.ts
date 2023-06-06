@@ -1,57 +1,56 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { EMPTY, Observable, Subject, catchError, map } from "rxjs";
-import { Passageiro } from "src/app/models/passageiro.model";
-import { ResponseId } from "src/app/models/responseId.model";
+import { Motorista } from "src/app/models/motorista.model";
+import { ResponseId } from "../models/responseId.model";
+import { Carro } from "../models/carro.model";
 
 
 @Injectable ({
     providedIn: 'root'
   })
-export class PassageiroSerivce{
+export class CarroSerivce{
 
-  apiUrl = "http://localhost:8080/passageiros";
+  apiUrl = "http://localhost:8080/carros";
 
     constructor(private http : HttpClient){}
 
-    loginPassageiro(login: any): Observable<ResponseId> {
+    cadastrarCarro(carro: any): Observable<ResponseId> {
 
         const headers= new HttpHeaders()
             .set('content-type', 'application/json')
             .set('Access-Control-Allow-Origin', '*');
 
-        return this.http.post<ResponseId>(`${ this.apiUrl }/login`, JSON.stringify(login), {
+        return this.http.post<ResponseId>(`${ this.apiUrl }`, JSON.stringify(carro), {
             headers : headers
         });
     }
 
-    cadastrarPassageiro(passageiro: any): Observable<ResponseId> {
-
-        const headers= new HttpHeaders()
-            .set('content-type', 'application/json')
-            .set('Access-Control-Allow-Origin', '*');
-
-        return this.http.post<ResponseId>(`${ this.apiUrl }`, JSON.stringify(passageiro), {
-            headers : headers
-        });
-    }
-
-    readById(id: any): Observable<Passageiro> {
+    readById(id: any): Observable<Carro> {
         const url = `${this.apiUrl}/${id}`
-        return this.http.get<Passageiro>(url).pipe(
+        return this.http.get<Carro>(url).pipe(
           map((obj) => obj),
           catchError((e) => this.errorHandler(e))
           );
     
     }
 
-    atualizarPassageiro(passageiro: any){
+    readCarrosByMotoristaId(motoristaId: any): Observable<Carro[]> {
+        const url = `${this.apiUrl}/${motoristaId}`
+        return this.http.get<Carro[]>(url).pipe(
+          map((obj) => obj),
+          catchError((e) => this.errorHandler(e))
+          );
+    
+    }
+
+    atualizarCarro(carro: any){
 
         const headers= new HttpHeaders()
             .set('content-type', 'application/json')
             .set('Access-Control-Allow-Origin', '*');
 
-        this.http.put(`${ this.apiUrl }/${passageiro.id}`, JSON.stringify(passageiro), {
+        this.http.put(`${ this.apiUrl }/${carro.id}`, JSON.stringify(carro), {
             headers : headers
         })
         .subscribe(resultado => resultado);
@@ -65,11 +64,10 @@ export class PassageiroSerivce{
           );
     
     }
-    
+
     errorHandler(e: any): Observable<any>{
         console.log("erro: " + e);
         return EMPTY
       }
-
 
 }

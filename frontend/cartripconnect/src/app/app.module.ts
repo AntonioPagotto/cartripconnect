@@ -14,6 +14,12 @@ import { MeuPerfilMotoristaComponent } from './telas/meu-perfil-motorista/meu-pe
 import { LoginPassageiroComponent } from './telas/login-passageiro/login-passageiro.component';
 import { RouterModule } from '@angular/router';
 import { InicioComponent } from './telas/inicio/inicio.component';
+import { MeusCarrosComponent } from './telas/meus-carros/meus-carros.component';
+import { CorridasMotoristaComponent } from './telas/corridas-motorista/corridas-motorista.component';
+import { MotoristaSerivce } from './services/motorista.service';
+import { CorridaService } from './services/corrida.service';
+import { CarroSerivce } from './services/carro.service';
+import { CorridasPassageiroComponent } from './telas/corridas-passageiro/corridas-passageiro.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,9 @@ import { InicioComponent } from './telas/inicio/inicio.component';
     CadastroPassageiroComponent,
     MeuPerfilPassageiroComponent,
     MeuPerfilMotoristaComponent,
+    MeusCarrosComponent,
+    CorridasMotoristaComponent,    
+    CorridasPassageiroComponent,
     InicioComponent
   ],
   imports: [
@@ -32,7 +41,7 @@ import { InicioComponent } from './telas/inicio/inicio.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [PassageiroSerivce],
+  providers: [PassageiroSerivce, MotoristaSerivce,CorridaService, CarroSerivce],
   bootstrap: [AppComponent],
   exports:[RouterModule]
 })

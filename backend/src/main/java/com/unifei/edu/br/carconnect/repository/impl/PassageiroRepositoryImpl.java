@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class PassageiroRepositoryImpl implements PassageiroRepository {
@@ -47,7 +48,10 @@ public class PassageiroRepositoryImpl implements PassageiroRepository {
   @Override
   public String apagarPassageiroPorId(final String id){
 
-    return mongoOperations.remove(id).toString();
+    Query query = new Query();
+    query.addCriteria(Criteria.where("_id").is(id));
+
+    return mongoOperations.remove(query, Passageiro.class, "passageiros").toString();
   }
 
   @Override

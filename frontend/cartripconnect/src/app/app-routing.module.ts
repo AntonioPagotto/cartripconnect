@@ -7,6 +7,9 @@ import { LoginPassageiroComponent } from './telas/login-passageiro/login-passage
 import { LoginMotoristaComponent } from './telas/login-motorista/login-motorista.component';
 import { InicioComponent } from './telas/inicio/inicio.component';
 import { MeuPerfilMotoristaComponent } from './telas/meu-perfil-motorista/meu-perfil-motorista.component';
+import { MeusCarrosComponent } from './telas/meus-carros/meus-carros.component';
+import { CorridasMotoristaComponent } from './telas/corridas-motorista/corridas-motorista.component';
+import { CorridasPassageiroComponent } from './telas/corridas-passageiro/corridas-passageiro.component';
 
 export const ROUTES: Routes = [
   { path: '', component: InicioComponent },
@@ -17,6 +20,9 @@ export const ROUTES: Routes = [
   { path: 'meu-perfil-motorista/:id', component: MeuPerfilMotoristaComponent },
   { path: 'cadastro-motorista', component: CadastroMotoristaComponent },
   { path: 'cadastro-passageiro', component: CadastroPassageiroComponent },
+  { path: 'meus-carros/:id', component: MeusCarrosComponent },
+  { path: 'corridas-motorista/:id', component: CorridasMotoristaComponent },
+  { path: 'corridas-passageiro/:id', component: CorridasPassageiroComponent },
 ];
 
 

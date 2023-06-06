@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PassageiroSerivce } from '../../services/passageiro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cadastro-passageiro-component',
@@ -17,7 +18,7 @@ export class CadastroPassageiroComponent {
   senha = new FormControl(''); 
   meioDePagamento = new FormControl(''); 
 
-  constructor(private appService : PassageiroSerivce) {}
+  constructor(private appService : PassageiroSerivce, private router: Router) {}
 
   cadastrarPassageiro(){
 
@@ -32,7 +33,9 @@ export class CadastroPassageiroComponent {
 
     console.log(JSON.stringify(passageiro));
 
-    this.appService.cadastrarPassageiro(passageiro);    
+    this.appService.cadastrarPassageiro(passageiro).subscribe(response => {
+      this.router.navigate(['/meu-perfil-passageiro/', response.id]);
+    });    
   }
 
 }

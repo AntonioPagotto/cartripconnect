@@ -7,13 +7,4 @@ import { PassageiroSerivce } from '../../services/passageiro.service';
   styleUrls: []
 })
 export class InicioComponent {
-
-  constructor(private appService : PassageiroSerivce) {}
-
-
-  login(){
-    
-  }
-
-
 }

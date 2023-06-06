@@ -40,9 +40,11 @@ public class PassageiroController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createPassageiro(@RequestBody Passageiro passageiro) {
-        String id = passageiroService.createPassageiro(passageiro);
-        return ResponseEntity.status(HttpStatus.CREATED).body(id);
+    public ResponseEntity<IdResponse> createPassageiro(@RequestBody Passageiro passageiro) {
+
+        IdResponse response = new IdResponse(passageiroService.createPassageiro(passageiro));
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("/{id}")

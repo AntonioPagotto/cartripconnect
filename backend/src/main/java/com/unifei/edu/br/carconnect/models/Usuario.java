@@ -14,3 +14,4 @@ public abstract class Usuario {
     private String ranking;
 
 }
+

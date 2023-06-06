@@ -1,7 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img style="margin: auto;" src="../../assets/logo.png" width="250" height="auto">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a [routerLink]="['meu-perfil-passageiro', id]" class="nav-link">Meu perfil</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/corridas-passageiro', id]"  class="nav-link">Corridas</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/inicio']"  class="nav-link">Logoff</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="page">
-  <form class="formLogin">
-    <img src="../../assets/logo.png" width="250" height="auto">
+  <div class="formLogin">
+    <img style="margin: auto;" src="../../assets/logo.png" width="250" height="auto">
     <h1>Meu Perfil Passageiro</h1>
     <p>Dados do seu perfil de Passageiro</p>
     <label>Nome</label>
@@ -21,7 +40,8 @@
         <option value="3">Cartão de Débito</option>
       </select>
     </div>
-    <input (click)="atualizar()" value="Atualizar" class="btn" />
-  </form>
+    <button (click)="atualizar()" class="btn">Atualizar</button>
+    <button (click)="apagar()" style="background-color:brown" class="btn">Apagar sua conta</button>
+  </div>
 </div>
 

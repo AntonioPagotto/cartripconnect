@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { PassageiroSerivce } from '../../services/passageiro.service';
 import { MotoristaSerivce } from '../../services/motorista.service';
 import { Passageiro } from 'src/app/models/passageiro.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'meu-perfil-passageiro-component',
@@ -23,7 +23,8 @@ export class MeuPerfilPassageiroComponent implements OnInit{
 
   constructor(
     private passageiroService : PassageiroSerivce,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -56,6 +57,10 @@ export class MeuPerfilPassageiroComponent implements OnInit{
     console.log(JSON.stringify(passageiro));
 
     this.passageiroService.atualizarPassageiro(passageiro);    
+  }
+
+  apagar(){
+    this.passageiroService.deleteById(this.id).subscribe(response => this.router.navigate(['/inicio']))
   }
 
 }

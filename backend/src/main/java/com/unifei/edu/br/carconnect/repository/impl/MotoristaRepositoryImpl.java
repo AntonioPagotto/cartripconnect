@@ -47,7 +47,10 @@ public class MotoristaRepositoryImpl implements MotoristaRepository {
   @Override
   public String apagarMotoristaPorId(final String id){
 
-    return mongoOperations.remove(id).toString();
+    Query query = new Query();
+    query.addCriteria(Criteria.where("_id").is(id));
+
+    return mongoOperations.remove(query, Motorista.class, "motoristas").toString();
   }
 
   @Override
