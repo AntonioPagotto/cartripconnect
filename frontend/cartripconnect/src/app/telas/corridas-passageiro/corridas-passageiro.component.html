@@ -23,20 +23,35 @@
     <h1>Corridas Disponíveis</h1>
    
     <hr size="8">
-    Corridas Cadastradas:
-
     <div class="w-100">
 
       <div *ngFor="let corrida of corridas; let i = index">
         <div class="d-flex flex-row align-items-center margin-auto">
           
-          <div class="w-100 card">
-            <div class="card-body">{{ corrida.origem }}</div>
+          <div class="w-100 card" style="background-color: rgb(255, 204, 34); ">
+            <div style="margin: 20px;">
+              <mat-icon class="material-icons checkpoint" data-toggle="tooltip" title="Checkpoint">access_time</mat-icon>
+              
+              {{ formataEssaMerda(corrida.data) }}</div>    
+            
+            <div class="card-body">
+              <mat-icon class="material-icons checkpoint" data-toggle="tooltip" title="Checkpoint">pin_drop</mat-icon>
+              {{ corrida.origem }} (origem)</div>
             <hr>
-            <div class="card-body">{{ corrida.destino }}</div>
+            <div class="card-body"> 
+              <mat-icon class="material-icons checkpoint" data-toggle="tooltip" title="Checkpoint">place</mat-icon>
+              {{ corrida.destino }} (destino)</div>
+              <div class="ml-4">Modelo do carro: {{ corrida.carro }}</div>
+              <div class="ml-4">Total de passageiros: {{ corrida.passageiros.length }}</div>
+              <h4 class="ml-4" *ngIf="corrida.passageiros.length === 4 && !corrida.souPassageiro">
+                Carro cheio
+              </h4>
+            <button *ngIf="!corrida.souPassageiro && corrida.passageiros.length !== 4" (click)="participarCorrida(corrida.id)" class="mr-5 ml-5 bg-success text-light" >Participar</button>
+            <button *ngIf="corrida.souPassageiro" (click)="participarCorrida(corrida.id)" class="mr-5 ml-5 bg-danger text-light" >Cancelar</button>
+
           </div>
         </div>
-<hr>        
+        <hr>        
       </div>
     </div>
 

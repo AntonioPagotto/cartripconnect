@@ -63,6 +63,15 @@ export class CorridaService{
     
     }
 
+    adicionarOuRemoverPassageiro(dados:any): Observable<ResponseId> {
+      const headers= new HttpHeaders()
+          .set('content-type', 'application/json')
+          .set('Access-Control-Allow-Origin', '*');
+      return this.http.post<ResponseId>(`${ this.apiUrl }/passageiros`, JSON.stringify(dados),{
+        headers : headers
+    });
+  }
+
     errorHandler(e: any): Observable<any>{
         console.log("erro: " + e);
         return EMPTY

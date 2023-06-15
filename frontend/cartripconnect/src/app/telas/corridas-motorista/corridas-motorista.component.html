@@ -29,6 +29,15 @@
       <label>Nova Corrida</label>
       <input type="text" [formControl]="origem" placeholder="Origem da corrida" autofocus="true" />
       <input type="text" [formControl]="destino" placeholder="Destino da corrida" autofocus="true" />
+      <input type="datetime-local" [formControl]="data" id="data" name="Data" placeholder="Destino da corrida">
+      <p>Selecione o carro:</p>
+        <select [formControl]="carro">
+          <option *ngFor="let carro of carros" 
+          [value]="carro.id">
+        {{carro.modelo}}
+        </option>
+
+        </select>
     </div>
     
     <button *ngIf="!novaCorrida" (click)="ativarCadastro()"  class="btn">Nova Corrida</button>
@@ -41,18 +50,30 @@
       <div *ngFor="let corrida of corridas; let i = index">
         <div class="d-flex flex-row align-items-center margin-auto">
           
-          <div class="w-100 card">
-            <div class="card-body">{{ corrida.origem }}</div>
+          <div class="w-100 card" style="background-color: rgb(255, 204, 34); ">
+            <div style="margin: 20px;">
+              <mat-icon class="material-icons checkpoint" data-toggle="tooltip" title="Checkpoint">access_time</mat-icon>
+              
+              {{ formataEssaMerda(corrida.data) }}</div>    
+            
+            <div class="card-body">
+              <mat-icon class="material-icons checkpoint" data-toggle="tooltip" title="Checkpoint">pin_drop</mat-icon>
+              {{ corrida.origem }} (origem)</div>
             <hr>
-            <div class="card-body">{{ corrida.destino }}</div>
-          </div>
-          <div>
-            <a (click)="apagar(corrida.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <div class="card-body"> 
+              <mat-icon class="material-icons checkpoint" data-toggle="tooltip" title="Checkpoint">place</mat-icon>
+              {{ corrida.destino }} (destino)</div>
+              <div class="ml-4">Total de passageiros: {{ corrida.passageiros.length }}</div>
+              <h4 class="ml-4" *ngIf="corrida.passageiros.length === 4 && !corrida.souPassageiro">
+                Carro cheio
+              </h4>
+              <button (click)="apagar(corrida.id)" class="mr-5 ml-5 bg-danger text-light" >Cancelar Corrida</button>
+
           </div>
         </div>
-        <hr>
+        <hr>        
       </div>
-    </div>
+
 
   </div>
 </div>

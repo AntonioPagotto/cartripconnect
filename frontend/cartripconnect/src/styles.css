@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~material-design-icons/iconfont/material-icons.css';
 
 body {
     font-family: 'Inter', sans-serif;
@@ -124,3 +126,5 @@ body {
 
 
     
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

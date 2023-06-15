@@ -36,7 +36,7 @@ export class CarroSerivce{
     }
 
     readCarrosByMotoristaId(motoristaId: any): Observable<Carro[]> {
-        const url = `${this.apiUrl}/${motoristaId}`
+        const url = `${this.apiUrl}/motorista/${motoristaId}`
         return this.http.get<Carro[]>(url).pipe(
           map((obj) => obj),
           catchError((e) => this.errorHandler(e))

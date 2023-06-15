@@ -1,8 +1,11 @@
 export interface Corrida {
         id: string
-        motorista: string
-        passageiro: string
-        carro: string
+        motoristaId: string
+        passageiros: string[]
+        souPassageiro:boolean
         origem: string
         destino: string
+        data:string
+        carroModelo:string
+        carro:string
 }

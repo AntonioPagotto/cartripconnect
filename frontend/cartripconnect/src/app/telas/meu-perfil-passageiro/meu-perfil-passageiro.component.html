@@ -32,14 +32,12 @@
     <label>E-mail</label>
     <input type="email" [formControl]="email" placeholder="Digite seu e-mail" autofocus="true" />
     <label>Meio de Pagamento</label>
-    <div class="custom-select">
       <select [formControl]="meioDePagamento">
         <option value="0">Selecione o meio de pagamento</option>
         <option value="1">Pix</option>
         <option value="2">Cartão de Crédito</option>
         <option value="3">Cartão de Débito</option>
       </select>
-    </div>
     <button (click)="atualizar()" class="btn">Atualizar</button>
     <button (click)="apagar()" style="background-color:brown" class="btn">Apagar sua conta</button>
   </div>

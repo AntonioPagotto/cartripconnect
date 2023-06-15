@@ -20,6 +20,8 @@ import { MotoristaSerivce } from './services/motorista.service';
 import { CorridaService } from './services/corrida.service';
 import { CarroSerivce } from './services/carro.service';
 import { CorridasPassageiroComponent } from './telas/corridas-passageiro/corridas-passageiro.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CorridasPassageiroComponent } from './telas/corridas-passageiro/corrida
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [PassageiroSerivce, MotoristaSerivce,CorridaService, CarroSerivce],
   bootstrap: [AppComponent],
