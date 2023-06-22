@@ -2,6 +2,7 @@
 package com.unifei.edu.br.carconnect.controllers;
 
 import com.unifei.edu.br.carconnect.models.Corrida;
+import com.unifei.edu.br.carconnect.models.CorridaPassageiro;
 import com.unifei.edu.br.carconnect.models.IdResponse;
 import com.unifei.edu.br.carconnect.models.Login;
 import com.unifei.edu.br.carconnect.services.CorridaService;
@@ -67,6 +68,17 @@ public class CorridaController {
     public ResponseEntity<Void> deleteCorrida(@PathVariable String id) {
         corridaService.deleteCorrida(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/passageiros")
+    public ResponseEntity<IdResponse> adicionarOuRemoverPassageiro(@RequestBody CorridaPassageiro corridaPassageiro) {
+        String result = corridaService.adicionarOuRemoverPassageiro(corridaPassageiro);
+        if (result != null) {
+            IdResponse response = new IdResponse(result);
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

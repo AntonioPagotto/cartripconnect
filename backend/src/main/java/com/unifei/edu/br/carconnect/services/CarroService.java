@@ -22,6 +22,11 @@ public class CarroService {
         return carroRepository.buscarCarroPorMotoristaId(id);
     }
 
+    public Carro getCarroById(String id) {
+        return carroRepository.buscarCarroPorId(id);
+    }
+
+
     public String createCarro(Carro carro) {
         return carroRepository.inserirCarro(carro);
     }

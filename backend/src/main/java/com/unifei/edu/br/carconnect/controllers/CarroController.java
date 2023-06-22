@@ -33,9 +33,19 @@ public class CarroController {
         return ResponseEntity.ok(carros);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/motorista/{id}")
     public ResponseEntity<List<Carro>> getCarroByMotoristaId(@PathVariable String id) {
         List<Carro> carro = carroService.getCarroByMotoristaId(id);
+        if (carro != null) {
+            return ResponseEntity.ok(carro);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Carro> getCarroById(@PathVariable String id) {
+        Carro carro = carroService.getCarroById(id);
         if (carro != null) {
             return ResponseEntity.ok(carro);
         } else {
